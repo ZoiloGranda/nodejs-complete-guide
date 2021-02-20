@@ -23,13 +23,14 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
- Product.fetchAll(products => {
-  res.render('shop/index', {
-   prods: products,
-   pageTitle: 'Shop',
-   path: '/'
-  });
- });
+ Product.fetchAll()
+  .then(([rows, fieldData]) => {
+   res.render('shop/index', {
+    prods: rows,
+    pageTitle: 'Shop',
+    path: '/'
+   });
+  }).catch(err => console.log(err))
 };
 
 exports.getCart = (req, res, next) => {
@@ -52,10 +53,10 @@ exports.getCart = (req, res, next) => {
  })
 };
 
-exports.postCartDeleteProduct = (req, res, next)=>{
+exports.postCartDeleteProduct = (req, res, next) => {
  const prodId = req.body.productId
- console.log({prodId});
- Product.findById(prodId, product =>{
+ console.log({ prodId });
+ Product.findById(prodId, product => {
   Cart.deleteProduct(prodId, product.price)
   res.redirect('/cart')
 
