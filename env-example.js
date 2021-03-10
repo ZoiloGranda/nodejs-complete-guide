@@ -1,3 +1,3 @@
 module.exports = {
- DB_PASSWORD = 'DBPASSWORHERE'
+ DB_PASSWORD: 'DBPASSWORDHERE'
 }

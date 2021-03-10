@@ -1,4 +1,4 @@
-const Sequelize = require('sequilize')
+const Sequelize = require('sequelize')
 const env = require('../env')
 
 const sequelize = new Sequelize('node-complete', 'root', env.DB_PASSWORD, {
