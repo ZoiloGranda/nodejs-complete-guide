@@ -40,7 +40,7 @@ Product.belongsTo(User, {
 User.hasMany(Product)
 
 sequelize
- .sync({force:true})
+ .sync()
  .then(result => {
   return User.findByPk(1)
  }).then(user => {
