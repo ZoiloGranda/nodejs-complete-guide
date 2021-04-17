@@ -1,15 +1,17 @@
-const mongodb = require("mongodb");
+const mongodb = require('mongodb');
 const MongoClient = mongodb.MongoClient;
 
-const mongoConnect = (callback) => {
+const mongoConnect = callback => {
   MongoClient.connect(
-    "mongodb+srv://new_admin:<password>@cluster0.37fti.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+    'mongodb+srv://maximilian:9u4biljMQc4jjqbe@cluster0-ntrwp.mongodb.net/test?retryWrites=true'
   )
-    .then((client) => {
-      console.log("connected");
+    .then(client => {
+      console.log('Connected!');
       callback(client);
     })
-    .catch((err) => console.log(err));
+    .catch(err => {
+      console.log(err);
+    });
 };
 
-module.exports = mongoConnect
+module.exports = mongoConnect;
